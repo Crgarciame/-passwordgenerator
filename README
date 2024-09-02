@@ -30,25 +30,25 @@ Requisitos
 Instalación
 
 1. Clona este repositorio:
-    ```bash
+    ```
     git clone https://github.com/tu_usuario/generador_contraseñas.git
     ```
 2. Navega al directorio del proyecto:
-    ```bash
+    ```
     cd generador_contraseñas
     ```
 
 Uso
 
 1. Ejecuta el script principal:
-    ```bash
+    ```
     python generador_contraseñas.py
     ```
 2. Haz clic en el botón "Generar Contraseña" para generar una nueva contraseña.
 
 Código
 
-```python
+```
 import random
 import string
 import tkinter as tk
