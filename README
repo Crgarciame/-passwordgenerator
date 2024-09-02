@@ -1,1 +1,82 @@
-Explica aquí tu programa
+El primer módulo que utilizo es `random`. Este módulo implementa generadores de números para varias distribuciones. En mi programa, me permite generar caracteres aleatorios. 
+Utilizo la librería `string`, que contiene constantes para acceder a diferentes tipos de caracteres. Las constantes que uso son `.ascii_letters`, `.digits` y `.punctuation`, 
+que me permiten acceder a letras, números y símbolos especiales para formar contraseñas seguras.
+El paquete `Tkinter` es una biblioteca que proporciona herramientas para crear interfaces gráficas de usuario (GUI).
+Aunque fue el más difícil de aprender debido a sus instrucciones complejas, pude dominarlo leyendo varios foros y recursos en línea.
+Función principal:
+La función principal del programa define un nombre y sus parámetros. Dentro de esta función, se utilizan las librerías `string` para generar caracteres y `random`
+para entregarlos al usuario de manera aleatoria. Esto permite crear contraseñas seguras y aleatorias según los parámetros especificados.
+
+
+Generador de Contraseñas
+
+Este proyecto es una aplicación de escritorio simple para generar contraseñas seguras utilizando Python y Tkinter.
+
+Descripción
+
+La aplicación permite generar contraseñas seguras con una longitud y características específicas, como incluir letras mayúsculas, números y símbolos. La interfaz gráfica de usuario (GUI) está construida con Tkinter.
+
+Características
+
+- Generación de contraseñas seguras.
+- Interfaz gráfica de usuario simple y fácil de usar.
+- Opciones para incluir letras mayúsculas, números y símbolos en la contraseña.
+
+Requisitos
+
+- Python 3.x
+- Tkinter (generalmente incluido con Python)
+
+Instalación
+
+1. Clona este repositorio:
+    ```bash
+    git clone https://github.com/tu_usuario/generador_contraseñas.git
+    ```
+2. Navega al directorio del proyecto:
+    ```bash
+    cd generador_contraseñas
+    ```
+
+Uso
+
+1. Ejecuta el script principal:
+    ```bash
+    python generador_contraseñas.py
+    ```
+2. Haz clic en el botón "Generar Contraseña" para generar una nueva contraseña.
+
+Código
+
+```python
+import random
+import string
+import tkinter as tk
+
+class GeneradorUI:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Generador de Contraseñas")
+
+        self.label = tk.Label(root, text="Contraseña generada: ")
+        self.label.pack()
+
+        self.password_var = tk.StringVar()
+        self.password_entry = tk.Entry(root, textvariable=self.password_var, show="")
+        self.password_entry.pack()
+
+        self.generate_button = tk.Button(root, text="Generar Contraseña", command=self.generar)
+        self.generate_button.pack()
+
+    def generar(self, longitud=12, incluir_mayusculas=True, incluir_numeros=True, incluir_simbolos=True):
+        """Genera una contraseña segura según los parámetros especificados."""
+        caracteres = string.ascii_letters
+        caracteres += string.digits
+        caracteres += string.punctuation
+        contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
+        self.password_var.set(contraseña)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = GeneradorUI(root)
+    root.mainloop()
